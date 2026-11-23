@@ -1,0 +1,5 @@
+remaining
+1. mkdir -p app/models
+touch app/models/__init__.py
+
+
