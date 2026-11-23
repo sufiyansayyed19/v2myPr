@@ -1,13 +1,12 @@
 from fastapi import FastAPI
+from config.settings import settings
 
-app = FastAPI(title="FastAPI Application")
+app = FastAPI(
+    title=settings.app_name,
+    debug=settings.debug
+)
 
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello, World!"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str | None = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/health")
+def health():
+    return {"status": "ok"}
